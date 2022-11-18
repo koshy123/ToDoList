@@ -49,7 +49,7 @@ body {
   transform: scale(0.98);
 }
 
-.btn-block {
+.block {
   display: block;
   width: 100%;
 }
