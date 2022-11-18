@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
-
 const App = () => {
   const [tasks, setTasks] = useState([
     {
@@ -20,13 +19,7 @@ const App = () => {
   },
   ])
 
- 
-
-    
-
     const addTask = (task) => {
-      // const id = Math.floor(Math.random() *
-      //  1000) + 1
        const newTask = { ...task }
        setTasks([...tasks, newTask])
       }
@@ -34,18 +27,10 @@ const App = () => {
     const markComplete = (title) => {
 
        tasks.find(task=> task.title === title).complete ? tasks.find(task=> task.title === title).complete = false :tasks.find(task=> task.title === title).complete = true;
-      //setTasks(tasks);
       setTasks(oldTasks=> {
         oldTasks = tasks
         return [...oldTasks];
       })
-
-    //  setTasks(oldTasks=> {
-    //   return oldTasks.map(task=> task.title === title).complete= true;
-  
-    //  })
-
-     console.log(tasks);
     }
   
   return (

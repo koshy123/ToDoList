@@ -29,13 +29,8 @@ const onSubmit =(e) => {
             onChange={(e) => 
             setText(e.target.value)}   />
             </div>
-
-        
             <input className="block" type='submit' value='Save Task' />
         </form>
-        
-
-              
     )
 }
 
