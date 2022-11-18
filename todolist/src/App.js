@@ -1,52 +1,59 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
+
 const App = () => {
   const [tasks, setTasks] = useState([
     {
-        id: 1,
-        text: "doc app",
-        day: 'Feb 5',
-        reminder: true,
+   title: "Wash the dishes",
+   complete: false
+  },
+  {
+   title: "Walk the dog",
+   complete: false
+  },
+  {
+   title: "Make the bed",
+   complete: true
+  },
+  ])
+
+ 
+
     
-    },
-    {
-        id: 2,
-        text: "lunch",
-        day: 'Dec 5',
-        reminder: false,
-    },
-    {
-        id: 3,
-        text: "work",
-        day: 'Mar 5',
-        reminder: true,
-    },
-    ])
 
     const addTask = (task) => {
-      const id = Math.floor(Math.random() *
-       1000) + 1
-       const newTask = { id , ...task }
+      // const id = Math.floor(Math.random() *
+      //  1000) + 1
+       const newTask = { ...task }
        setTasks([...tasks, newTask])
       }
 
-    const deleteTask = (id) => {
-      setTasks(tasks.filter((task) => task.id !== id))
+    const markComplete = (title) => {
+
+       tasks.find(task=> task.title === title).complete ? tasks.find(task=> task.title === title).complete = false :tasks.find(task=> task.title === title).complete = true;
+      setTasks(tasks);
+
+    //  setTasks(oldTasks=> {
+    //   return oldTasks.map(task=> task.title === title).complete= true;
+  
+    //  })
+
+     console.log(tasks);
     }
   
   return (
     <div className='container'>
       <Header />
       <AddTask onAdd= {addTask}/>
-      {tasks.length > 0 ? (<Tasks tasks ={tasks} 
-      onDelete = {deleteTask} />
+     
+      {tasks.length > 0 ? (<Tasks tasks ={tasks} markComplete={markComplete}
+      />
       ) : ( 'No Tasks')
     }
     </div>
-
   )
 }
 

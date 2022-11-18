@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 
 
 const AddTask = ({onAdd}) => {
-const [text, setText ] = useState('')
+const [title, setText ] = useState('')
 const [day, setDay ] = useState('')
 
 const onSubmit =(e) => {
     e.preventDefault()
-    if(!text){
+    if(!title){
         alert('Please add To-Do')
     }
 
-    onAdd({text,day})
+    onAdd({title, complete: false});
 
     setText('')
     setDay('')
@@ -25,21 +25,12 @@ const onSubmit =(e) => {
             <input 
             type='text' 
             placeholder='Add To-Do'
-            value={text} 
+            value={title} 
             onChange={(e) => 
             setText(e.target.value)}   />
             </div>
 
-            <div className="form-control" >
-            <label>The Day</label>
-            <input 
-            type='text' 
-            placeholder='Add Day'
-            value={day} 
-            onChange={(e) => 
-            setDay(e.target.value)}  />
-            </div>
-
+        
             <input className="block" type='submit' value='Save Task' />
         </form>
         
