@@ -34,7 +34,11 @@ const App = () => {
     const markComplete = (title) => {
 
        tasks.find(task=> task.title === title).complete ? tasks.find(task=> task.title === title).complete = false :tasks.find(task=> task.title === title).complete = true;
-      setTasks(tasks);
+      //setTasks(tasks);
+      setTasks(oldTasks=> {
+        oldTasks = tasks
+        return [...oldTasks];
+      })
 
     //  setTasks(oldTasks=> {
     //   return oldTasks.map(task=> task.title === title).complete= true;
